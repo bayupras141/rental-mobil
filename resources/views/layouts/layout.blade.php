@@ -72,8 +72,6 @@
 
                     <!-- Content Row -->
                     <div class="row">
-                        @include('layouts.success')
-                        @include('layouts.error')
                         @yield('content')
                     </div>
 

@@ -8,7 +8,7 @@
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Mobil Tersedia</div>
-                    {{-- <div class="h5 mb-0 font-weight-bold text-gray-800">{{$car->where('status','tersedia')->get()->count()}} / {{$car->get()->count()}}</div> --}}
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$mobil}}</div>
                 </div>
                 <div class="col-auto">
                     <i class="fas fa-car fa-2x text-gray-300"></i>
