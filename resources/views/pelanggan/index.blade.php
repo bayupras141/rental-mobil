@@ -133,6 +133,7 @@
     <script src="{{ asset('app-assests/vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
 
 <script>
+    // start function
     $(document).ready(function($){
         $.ajaxSetup({
             headers: {
