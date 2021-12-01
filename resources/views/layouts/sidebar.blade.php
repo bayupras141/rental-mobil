@@ -26,28 +26,11 @@
         Addons
     </div>
     <li class="nav-item">
-        <a class="nav-link #" href="#" data-toggle="collapse" data-target="#car" aria-expanded="true" aria-controls="car">
-            <i class="fas fa-fw fa-car"></i>
-            <span>Data Mobil</span>
-        </a>
-        <div id="car" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">Mobil</a>
-            </div>
-        </div>
-    </li>
-    {{-- <li class="nav-item {{active('car.index')}}">
-        <a class="nav-link" href="{{route('car.index')}}">
+        <a class="nav-link" href="{{route('mobil.index')}}">
             <i class="fas fa-fw fa-car"></i>
             <span>Mobil</span>
         </a>
     </li>
-    <li class="nav-item {{active('manufacture.index')}}">
-        <a class="nav-link" href="{{route('manufacture.index')}}">
-            <i class="fas fa-fw fa-car"></i>
-            <span>Merk</span>
-        </a>
-    </li> --}}
     <li class="nav-item">
         <a class="nav-link" href="#">
             <i class="fas fa-fw fa-user"></i>
