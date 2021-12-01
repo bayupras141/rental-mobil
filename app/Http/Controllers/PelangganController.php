@@ -84,7 +84,7 @@ class PelangganController extends Controller
 
         return response()->json([
             'status' => 'sukses',
-            'message'=>'Mobil berhasil Ditambahkan'
+            'message'=>'Pelanggan berhasil Ditambahkan'
         ],200);
     }
 

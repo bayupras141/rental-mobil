@@ -2,21 +2,25 @@
 @section('title','Pelanggan')
 @section('content')
 
- <div class="col-lg-12">
+{{-- card --}}
+<div class="col-lg-12">
     <div class="card shadow-sm mb-4">
         <div class="col-lg-2">
             <br>
-            <button id="createNewData" class="dt-button create-new btn btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button"  ><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus mr-50 font-small-4"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                Tambah Data</span></button>
+            <button id="createNewData" class="dt-button create-new btn btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button">
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus mr-50 font-small-4"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Tambah Data</span>
+            </button>
         </div>
         <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">@yield('title')</h6>
+            <h6 class="m-0 font-weight-bold text-primary">@yield('title')</h6>
         </div>
         <div class="card-body">
+            {{-- table --}}
             <table class="data-table table" id="data-table">    
                 <thead>
                     <tr>
-                        <th>No</th>
+                        <th>#</th>
                         <th>Nama</th>
                         <th>Username</th>
                         <th>Nik</th>
@@ -27,11 +31,15 @@
                         <th>Action</th>
                     </tr>
                 </thead>
+                <tbody>
+
+                </tbody>
             </table>
+            {{-- end table --}}
         </div>
     </div>
 </div>
-
+{{-- end card --}}
 
 <div class="modal fade text-left" id="modalBox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -88,7 +96,7 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <div class="form-group row" style="padding-left: 13px;"> 
+                        <div class="form-group" style="padding-left: 13px;"> 
                             <label for="contact-info">Jenis kelamin</label>
                             <div class="custom-control custom-radio ml-1 ">
                                 <input type="radio" id="validationRadiojq1" name="jenis_kelamin" value="Laki-Laki" class="custom-control-input">
@@ -139,13 +147,13 @@
             ajax: "{{ route('pelanggan.index') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-           {data: 'nama', name: 'nama'},
-            {data: 'username', name: 'username'},
-            {data: 'nik', name: 'nik'},
-            {data: 'email', name: 'email'},
-            {data: 'alamat', name: 'alamat'},
-            {data: 'no_hp', name: 'no_hp'},
-            {data: 'jenis_kelamin', name: 'jenis_kelamin'},
+                {data: 'nama', name: 'nama'},
+                {data: 'username', name: 'username'},
+                {data: 'nik', name: 'nik'},
+                {data: 'email', name: 'email'},
+                {data: 'alamat', name: 'alamat'},
+                {data: 'no_hp', name: 'no_hp'},
+                {data: 'jenis_kelamin', name: 'jenis_kelamin'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
