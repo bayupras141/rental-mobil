@@ -9,7 +9,7 @@
     </div>
         <div class="card-body">
         <table class="data-table table" id="data-table">
-            <button id="btn-add" name="btn-add" class="btn btn-primary btn-xs">Add </button>
+            <button id="createNewData" name="createNewData" class="btn btn-primary btn-xs">Add </button>
                 
                 <thead>
                     <tr>
@@ -31,14 +31,20 @@
 </div>
 
 
-<div class="modal fade" id="linkEditorModal" aria-hidden="true">
-<div class="modal-dialog">
-<div class="modal-content">
-    <div class="modal-header">
+<div class="modal fade text-left" id="modalBox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
         <h4 class="modal-title" id="modalHeading " style="color: black;" >Tambah Pelanggan</h4>
     </div>
     <div class="modal-body">    
-<form id="modalFormData" name="modalFormData" class="form-horizontal">
+<form id="dataForm" name="dataForm" class="form-horizontal">
+         <!-- validator -->
+         <ul class="list-group" id="errors-validate">
+                    </ul>
+                    <!-- end -->
+                
+                    <input type="hidden" name="data_id" id="data_id">
             <div class="form-group">
                  <label class="col-sm-2 control-label">Nama</label>
                     <div class="col-sm-12">
@@ -130,7 +136,7 @@
                 ajax: "{{ route('pelanggan.index') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                    {data: 'nama', name: 'nama'},
+               {data: 'nama', name: 'nama'},
                 {data: 'username', name: 'username'},
                 {data: 'nik', name: 'nik'},
                 {data: 'email', name: 'email'},
@@ -142,15 +148,17 @@
             });
 
     // button create new data
-    $('#btn-add').click(function () {
-        $('#saveBtn').html("Save");
-        $('#data_id').val('');
-        $('#modalFormData').trigger("reset");
-        $('#modalHeading').html("Tambah Data");
-        $('#linkEditorModal').modal('show');
-        $("#errors-validate").hide();
-        $('#saveBtn').prop('disabled', false);
-    });
+             // show modal
+             $('#createNewData').click(function () { 
+                $('#saveBtn').val("create-pelanggan");
+                $('#data_id').val('');
+                $('#dataForm').trigger("reset");
+                $('#modalHeading').html("Tambah Data");
+                $('#modalBox').modal('show');
+                $("#errors-validate").hide();
+                $('#saveBtn').prop('disabled', false);
+            });
+
     // end 
       // store process
       $('#saveBtn').click(function (e) {
@@ -158,7 +166,7 @@
                 $(this).html('Sending..');
 
                 $.ajax({
-                  data: $('#modalFormData').serialize(),
+                  data: $('#dataForm').serialize(),
                   url: "{{route('pelanggan.store')}}",
                   type: "POST",
                   dataType: 'json',
@@ -166,7 +174,7 @@
                       if(data.status == 'sukses'){
                             $('#modalBox').modal('hide');
                             Swal.fire("Selamat", data.message , "success");
-                            $('#modalFormData').trigger("reset");
+                            $('#dataForm').trigger("reset");
                             table.draw();
 
                         }else{
