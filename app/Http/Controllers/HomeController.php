@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mobil;
+use App\Models\Pelanggan;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $mobil = Mobil::where('status','tersedia')->get()->count();
-        // $customer = $this->customer;
+        $customer = Pelanggan::all()->count();
         // $transaction  = $this->transaction;
 
         // $transaction_data = [];
@@ -60,6 +61,6 @@ class HomeController extends Controller
         //          'duration': 2000
         //      }
         //  }");
-        return view('home', compact('mobil'));
+        return view('home', compact('mobil', 'customer'));
     }
 }

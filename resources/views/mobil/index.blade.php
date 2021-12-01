@@ -36,7 +36,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="modalHeading">Input Data Mobil</h4>
+                <h4 class="modal-title" id="modalHeading">Tambah Data Mobil</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -81,6 +81,7 @@
 </div>
 <!-- end modal --> 
 @endsection
+
 @push('scripts')
     <script src="{{ asset('app-assests/vendors/js/tables/datatable/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('app-assests/vendors/js/tables/datatable/datatables.bootstrap4.min.js') }}"></script>
