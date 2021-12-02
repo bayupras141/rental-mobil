@@ -198,42 +198,70 @@
                 });
             });
 
-            // delete
-            $('body').on('click', '.deleteData', function () {
-                var data_id = $(this).data("id");
-                Swal.fire({
-                title: "Apa kamu yakin?",
-                text: "Menghapus data ini!",
-                icon: "warning",
-                buttons: [
-                    'Tidak',
-                    'Iya'
-                ],
-                dangerMode: true,
-                }).then(function(isConfirm) {
-                if (isConfirm) {
-                Swal.fire({
-                title: 'Selamat!',
-                text: 'Data berhasil di hapus!',
-                icon: 'success'
-                }).then(function() {
-                    $.ajax({
-                        type: "DELETE",
-                        url: "{{ route('pelanggan.store') }}"+'/'+data_id,
-                        success: function (data) {
-                            table.draw();
-                        },
-                        error: function (data) {
-                            console.log('Error:', data);
-                        }
-                    });
-                });
-                } else {
-                    Swal.fire("Cencel", "Data tidak jadi dihapus :)", "error");
-                }
-                })
-            });
-            // end
+                 // edit data
+$('body').on('click', '.editData', function () {
+var data_id = $(this).data('id');
+$.get("{{ route('pelanggan.index') }}" +'/' + data_id +'/edit', function (data) {
+    $('#saveBtn').html("Update");  
+    $('#modalHeading').html("Edit Data");
+    $('#modalBox').modal('show');
+    $("#errors-validate").hide();
+     $('#saveBtn').prop('disabled', false);
+    // get data respone
+    $('#data_id').val(data.id);
+    $('#nama').val(data.nama);
+          $('#username').val(data.username);
+          $('#nik').val(data.nik);
+          $('#email').val(data.email);
+          $('#alamat').val(data.alamat);
+          $('#no_hp').val(data.no_hp);
+          if(data.jenis_kelamin == 'Laki-Laki'){
+                $("#validationRadiojq1").prop("checked", true);
+            }else{
+                $("#validationRadiojq2").prop("checked", true);
+            }
+})  });
+// end
+// end
+    // delete
+    $('body').on('click', '.deleteData', function () {
+
+var data_id = $(this).data("id");
+Swal.fire({
+title: "Apa kamu yakin?",
+text: "Menghapus data ini!",
+icon: "warning",
+buttons: [
+'Tidak',
+'Iya'
+],
+dangerMode: true,
+}).then(function(isConfirm) {
+if (isConfirm) {
+Swal.fire({
+title: 'Selamat!',
+text: 'Data berhasil di hapus!',
+icon: 'success'
+}).then(function() {
+    $.ajax({
+        type: "DELETE",
+        url: "{{ route('pelanggan.store') }}"+'/'+data_id,
+        success: function (data) {
+            table.draw();
+        },
+        error: function (data) {
+            console.log('Error:', data);
+        }
+    });
+});
+} else {
+Swal.fire("Cencel", "Data tidak jadi dihapus :)", "error");
+}
+})
+
+
+});
+
 
         });
         // end function

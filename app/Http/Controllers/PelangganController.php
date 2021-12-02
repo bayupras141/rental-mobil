@@ -105,9 +105,10 @@ class PelangganController extends Controller
      * @param  \App\Models\Pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pelanggan $pelanggan)
+    public function edit($id)
     {
-        //
+        $pelanggan = Pelanggan::where('id',$id)->first();
+        return response()->json($pelanggan,200);
     }
 
     /**
@@ -130,6 +131,10 @@ class PelangganController extends Controller
      */
     public function destroy(Pelanggan $pelanggan)
     {
-        //
+        $pelanggan->delete();
+        return response()->json([
+            'status' => 'sukses',
+            'message'=>'Kelas berhasil Di Hapus'
+        ],200);
     }
 }
