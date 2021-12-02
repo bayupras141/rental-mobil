@@ -120,8 +120,6 @@
 </div>
 <!-- end modal --> 
 
-</section>
-
 
 @endsection
 @push('scripts')
