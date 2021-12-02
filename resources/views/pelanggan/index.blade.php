@@ -132,110 +132,110 @@
     <script src="{{ asset('app-assests/vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('app-assests/vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
 
-<script>
-    // start function
-    $(document).ready(function($){
-        $.ajaxSetup({
-            headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        // get data table
-        var table = $('.data-table').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('pelanggan.index') }}",
-            columns: [
-                {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                {data: 'nama', name: 'nama'},
-                {data: 'username', name: 'username'},
-                {data: 'nik', name: 'nik'},
-                {data: 'email', name: 'email'},
-                {data: 'alamat', name: 'alamat'},
-                {data: 'no_hp', name: 'no_hp'},
-                {data: 'jenis_kelamin', name: 'jenis_kelamin'},
-                {data: 'action', name: 'action', orderable: false, searchable: false},
-            ]
-        });
-        // end data table
-
-        // show modal
-        $('#createNewData').click(function () { 
-            $('#saveBtn').val("create-pelanggan");
-            $('#data_id').val('');
-            $('#dataForm').trigger("reset");
-            $('#modalHeading').html("Tambah Data");
-            $('#modalBox').modal('show');
-            $("#errors-validate").hide();
-            $('#saveBtn').prop('disabled', false);
-        });
-        // end
-
-        // store process
-        $('#saveBtn').click(function (e) {
-            e.preventDefault();
-            $(this).html('Sending..');
-            $.ajax({
-              data: $('#dataForm').serialize(),
-              url: "{{route('pelanggan.store')}}",
-              type: "POST",
-              dataType: 'json',
-              success: function (data) {
-                  if(data.status == 'sukses'){
-                        $('#modalBox').modal('hide');
-                        Swal.fire("Selamat", data.message , "success");
-                        $('#dataForm').trigger("reset");
-                        table.draw();
-                    }else{
-                        $('#message-error').html(data.message).show()
-                    }
-              },
-              error: function (data) {
-                  console.log('Error:', data);
-                  $('#saveBtn').html('Save');
-              }
-            });
-        });
-        
-              // delete
-    $('body').on('click', '.deleteData', function () {
-        var data_id = $(this).data("id");
-        Swal.fire({
-        title: "Apa kamu yakin?",
-        text: "Menghapus data ini!",
-        icon: "warning",
-        buttons: [
-        'Tidak',
-        'Iya'
-        ],
-        dangerMode: true,
-        }).then(function(isConfirm) {
-        if (isConfirm) {
-        Swal.fire({
-        title: 'Selamat!',
-        text: 'Data berhasil di hapus!',
-        icon: 'success'
-        }).then(function() {
-            $.ajax({
-                type: "DELETE",
-                url: "{{ route('pelanggan.store') }}"+'/'+data_id,
-                success: function (data) {
-                    table.draw();
-                },
-                error: function (data) {
-                    console.log('Error:', data);
+    <script>
+        // start function
+        $(document).ready(function($){
+            $.ajaxSetup({
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-        });
-        } else {
-        Swal.fire("Cencel", "Data tidak jadi dihapus :)", "error");
-        }
-        })
-        });
-    // end
 
-    });
+            // get data table
+            var table = $('.data-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('pelanggan.index') }}",
+                columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'nama', name: 'nama'},
+                    {data: 'username', name: 'username'},
+                    {data: 'nik', name: 'nik'},
+                    {data: 'email', name: 'email'},
+                    {data: 'alamat', name: 'alamat'},
+                    {data: 'no_hp', name: 'no_hp'},
+                    {data: 'jenis_kelamin', name: 'jenis_kelamin'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                ]
+            });
+            // end data table
 
-</script>
+            // show modal
+            $('#createNewData').click(function () { 
+                $('#saveBtn').val("create-pelanggan");
+                $('#data_id').val('');
+                $('#dataForm').trigger("reset");
+                $('#modalHeading').html("Tambah Data");
+                $('#modalBox').modal('show');
+                $("#errors-validate").hide();
+                $('#saveBtn').prop('disabled', false);
+            });
+            // end
+
+            // store process
+            $('#saveBtn').click(function (e) {
+                e.preventDefault();
+                $(this).html('Sending..');
+                $.ajax({
+                  data: $('#dataForm').serialize(),
+                  url: "{{route('pelanggan.store')}}",
+                  type: "POST",
+                  dataType: 'json',
+                  success: function (data) {
+                      if(data.status == 'sukses'){
+                            $('#modalBox').modal('hide');
+                            Swal.fire("Selamat", data.message , "success");
+                            $('#dataForm').trigger("reset");
+                            table.draw();
+                        }else{
+                            $('#message-error').html(data.message).show()
+                        }
+                  },
+                  error: function (data) {
+                      console.log('Error:', data);
+                      $('#saveBtn').html('Save');
+                  }
+                });
+            });
+
+            // delete
+            $('body').on('click', '.deleteData', function () {
+                var data_id = $(this).data("id");
+                Swal.fire({
+                title: "Apa kamu yakin?",
+                text: "Menghapus data ini!",
+                icon: "warning",
+                buttons: [
+                'Tidak',
+                'Iya'
+                ],
+                dangerMode: true,
+                }).then(function(isConfirm) {
+                if (isConfirm) {
+                Swal.fire({
+                title: 'Selamat!',
+                text: 'Data berhasil di hapus!',
+                icon: 'success'
+                }).then(function() {
+                    $.ajax({
+                        type: "DELETE",
+                        url: "{{ route('pelanggan.destroy') }}"+'/'+data_id,
+                        success: function (data) {
+                            table.draw();
+                        },
+                        error: function (data) {
+                            console.log('Error:', data);
+                        }
+                    });
+                });
+                } else {
+                    Swal.fire("Cencel", "Data tidak jadi dihapus :)", "error");
+                }
+                })
+            });
+            // end
+
+        });
+        // end function
+    </script>
 @endpush
