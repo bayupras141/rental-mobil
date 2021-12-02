@@ -16,7 +16,7 @@
             <h6 class="m-0 font-weight-bold text-primary">@yield('title')</h6>
         </div>
         <div class="card-body">
-            {{-- table --}}
+           
             <table class="data-table table" id="data-table">    
                 <thead>
                     <tr>
@@ -35,11 +35,11 @@
 
                 </tbody>
             </table>
-            {{-- end table --}}
+           
         </div>
     </div>
 </div>
-{{-- end card --}}
+
 
 <div class="modal fade text-left" id="modalBox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -51,7 +51,7 @@
                 </button>
             </div>
             <div class="modal-body">    
-                {{-- form --}}
+              
                 <form id="dataForm" name="dataForm" class="form-horizontal">
 
                     <!-- validator -->
@@ -113,12 +113,14 @@
                         <button type="submit"  id="saveBtn" class="btn btn-primary" >Save</button>
                     </div>
                 </form>
-                {{-- end form --}}
+             
             </div>
         </div>
     </div>
 </div>
 <!-- end modal --> 
+
+</section>
 
 
 @endsection
@@ -195,7 +197,43 @@
               }
             });
         });
-        // end store process
+        
+              // delete
+    $('body').on('click', '.deleteData', function () {
+        var data_id = $(this).data("id");
+        Swal.fire({
+        title: "Apa kamu yakin?",
+        text: "Menghapus data ini!",
+        icon: "warning",
+        buttons: [
+        'Tidak',
+        'Iya'
+        ],
+        dangerMode: true,
+        }).then(function(isConfirm) {
+        if (isConfirm) {
+        Swal.fire({
+        title: 'Selamat!',
+        text: 'Data berhasil di hapus!',
+        icon: 'success'
+        }).then(function() {
+            $.ajax({
+                type: "DELETE",
+                url: "{{ route('pelanggan.store') }}"+'/'+data_id,
+                success: function (data) {
+                    table.draw();
+                },
+                error: function (data) {
+                    console.log('Error:', data);
+                }
+            });
+        });
+        } else {
+        Swal.fire("Cencel", "Data tidak jadi dihapus :)", "error");
+        }
+        })
+        });
+    // end
 
     });
 
