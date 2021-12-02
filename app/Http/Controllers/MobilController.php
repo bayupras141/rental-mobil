@@ -75,7 +75,7 @@ class MobilController extends Controller
             'warna'  => 'required',
             'status' => 'required'
         ]);
-        
+
         // mobil update or create
         $mobil = Mobil::updateOrCreate(
             ['id' => $request->data_id],
@@ -135,8 +135,12 @@ class MobilController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Mobil $mobil)
     {
-        //
+        $mobil->delete();
+        return response()->json([
+            'status' => 'sukses',
+            'message'=>'Mobil berhasil Dihapus'
+        ],200);
     }
 }

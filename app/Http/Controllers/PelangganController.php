@@ -134,7 +134,7 @@ class PelangganController extends Controller
         $pelanggan->delete();
         return response()->json([
             'status' => 'sukses',
-            'message'=>'Kelas berhasil Di Hapus'
+            'message'=>'Pelanggan berhasil Di Hapus'
         ],200);
     }
 }

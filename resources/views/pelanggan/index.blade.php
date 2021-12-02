@@ -175,26 +175,26 @@
             // store process
             $('#saveBtn').click(function (e) {
                 e.preventDefault();
-                $(this).html('Sending..');
+                $(this).html('Simpan');
                 $.ajax({
-                  data: $('#dataForm').serialize(),
-                  url: "{{route('pelanggan.store')}}",
-                  type: "POST",
-                  dataType: 'json',
-                  success: function (data) {
-                      if(data.status == 'sukses'){
+                    data: $('#dataForm').serialize(),
+                    url: "{{route('pelanggan.store')}}",
+                    type: "POST",
+                    dataType: 'json',
+                    success: function (data) {
+                        if(data.status == 'sukses'){
                             $('#modalBox').modal('hide');
                             Swal.fire("Selamat", data.message , "success");
                             $('#dataForm').trigger("reset");
                             table.draw();
                         }else{
                             $('#message-error').html(data.message).show()
-                        }
-                  },
-                  error: function (data) {
-                      console.log('Error:', data);
-                      $('#saveBtn').html('Save');
-                  }
+                        } 
+                    },
+                    error: function (data) {
+                        console.log('Error:', data);
+                        $('#saveBtn').html('Save');
+                    }
                 });
             });
             // end store process
@@ -211,16 +211,16 @@
                     // get data respone
                     $('#data_id').val(data.id);
                     $('#nama').val(data.nama);
-                          $('#username').val(data.username);
-                          $('#nik').val(data.nik);
-                          $('#email').val(data.email);
-                          $('#alamat').val(data.alamat);
-                          $('#no_hp').val(data.no_hp);
-                          if(data.jenis_kelamin == 'Laki-Laki'){
-                                $("#validationRadiojq1").prop("checked", true);
-                            }else{
-                                $("#validationRadiojq2").prop("checked", true);
-                            }
+                    $('#username').val(data.username);
+                    $('#nik').val(data.nik);
+                    $('#email').val(data.email);
+                    $('#alamat').val(data.alamat);
+                    $('#no_hp').val(data.no_hp);
+                    if(data.jenis_kelamin == 'Laki-Laki'){
+                          $("#validationRadiojq1").prop("checked", true);
+                    }else{
+                          $("#validationRadiojq2").prop("checked", true);
+                    }
                 })  
             });
             // end
@@ -232,18 +232,18 @@
                     title: "Apa kamu yakin?",
                     text: "Menghapus data ini!",
                     icon: "warning",
-                    buttons: [
-                        'Tidak',
-                        'Iya'
-                    ],
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes!',
                     dangerMode: true,
-                }).then(function(isConfirm) {
-                if (isConfirm) {
-                    Swal.fire({
-                    title: 'Selamat!',
-                    text: 'Data berhasil di hapus!',
-                    icon: 'success'
-                    }).then(function() {
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire(
+                          'Terhapus!',
+                          'Data berhasil dihapus.',
+                          'success'
+                        )
                         $.ajax({
                             type: "DELETE",
                             url: "{{ route('pelanggan.store') }}"+'/'+data_id,
@@ -254,10 +254,7 @@
                                 console.log('Error:', data);
                             }
                         });
-                    });
-                } else {
-                    Swal.fire("Cencel", "Data tidak jadi dihapus :)", "error");
-                }
+                    }
                 })
             });
             // end delete

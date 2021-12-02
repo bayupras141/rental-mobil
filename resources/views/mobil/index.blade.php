@@ -131,8 +131,8 @@
             // store process
             $('#saveBtn').click(function (e) {
                 e.preventDefault();
+                $('#saveBtn').html("Simpan");  
                 $(this).html('Sending..');
-
                 $.ajax({
                   data: $('#dataForm').serialize(),
                   url: "{{route('mobil.store')}}",
@@ -176,6 +176,40 @@
                 })
             });
             // end
+
+            // delete
+            $('body').on('click', '.deleteData', function () {
+                var data_id = $(this).data("id");
+                Swal.fire({
+                    title: "Apa kamu yakin?",
+                    text: "Menghapus data ini!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes!',
+                    dangerMode: true,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire(
+                          'Terhapus!',
+                          'Data berhasil dihapus.',
+                          'success'
+                        )
+                        $.ajax({
+                            type: "DELETE",
+                            url: "{{ route('mobil.store') }}"+'/'+data_id,
+                            success: function (data) {
+                                table.draw();
+                            },
+                            error: function (data) {
+                                console.log('Error:', data);
+                            }
+                        });
+                    }
+                })
+            });
+            // end delete
         });
     </script>
 @endpush
