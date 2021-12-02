@@ -68,14 +68,15 @@ class MobilController extends Controller
      */
     public function store(Request $request)
     {
-        // mobil update or create
+        // validate request
         $this->validate($request, [
             'nama'   => 'required',
             'nopol'  => 'required',
             'warna'  => 'required',
             'status' => 'required'
         ]);
-
+        
+        // mobil update or create
         $mobil = Mobil::updateOrCreate(
             ['id' => $request->data_id],
             [
@@ -86,6 +87,7 @@ class MobilController extends Controller
             ]
         );
 
+        // return response
         return response()->json([
             'status' => 'sukses',
             'message'=>'Mobil berhasil Ditambahkan'
@@ -110,9 +112,9 @@ class MobilController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Mobil $mobil)
     {
-        //
+        return response()->json($mobil, 200);
     }
 
     /**

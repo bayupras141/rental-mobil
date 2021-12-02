@@ -206,8 +206,8 @@
                 text: "Menghapus data ini!",
                 icon: "warning",
                 buttons: [
-                'Tidak',
-                'Iya'
+                    'Tidak',
+                    'Iya'
                 ],
                 dangerMode: true,
                 }).then(function(isConfirm) {
@@ -219,7 +219,7 @@
                 }).then(function() {
                     $.ajax({
                         type: "DELETE",
-                        url: "{{ route('pelanggan.destroy') }}"+'/'+data_id,
+                        url: "{{ route('pelanggan.store') }}"+'/'+data_id,
                         success: function (data) {
                             table.draw();
                         },

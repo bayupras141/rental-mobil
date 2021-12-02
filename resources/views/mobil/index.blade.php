@@ -71,7 +71,7 @@
                         <select name="status" id="status" class="form-control dt-post required">
                             <option  selected disabled >Pilih</option>
                             <option value="tersedia" id="tersedia">Tersedia</option>
-                            <option value="disewa" id="disewa">Sedang Disewa</option>
+                            <option value="sedang disewa" id="disewa">Sedang Disewa</option>
                         </select>
                         <!-- end form  -->
                     </div>
@@ -157,6 +157,25 @@
             });
             // end store process
 
+            // edit data
+            $('body').on('click', '.editData', function () {
+
+                var data_id = $(this).data('id');
+                $.get($(location).attr('href') +'/' + data_id +'/edit', function (data) {
+                    $('#saveBtn').html("Update");  
+                    $('#modalHeading').html("Edit Data");
+                    $('#modalBox').modal('show');
+                    $("#errors-validate").hide();
+                    $('#saveBtn').prop('disabled', false);
+                    // get data respone
+                    $('#data_id').val(data.id);
+                    $('#nama').val(data.nama);
+                    $('#nopol').val(data.nopol);
+                    $('#warna').val(data.warna);
+                    $('#status').val(data.status);
+                })
+            });
+            // end
         });
     </script>
 @endpush
