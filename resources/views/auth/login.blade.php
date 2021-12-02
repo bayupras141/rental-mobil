@@ -25,9 +25,6 @@
             <div class="col-lg-4">
                 <div class="card o-hidden border-0 shadow-sm my-5">
                     <div class="card-body p-5">
-                        @include('layouts.success')
-                        @include('layouts.error')
-
                         <div class="text-center">
                             <br>
                                 <small class="text-muted h6">
