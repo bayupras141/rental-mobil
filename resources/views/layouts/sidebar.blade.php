@@ -44,26 +44,26 @@
         </a>
         <div id="transaksi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">Transaksi</a>
+            <a class="collapse-item" href="{{route('transaksi.create')}}">Transaksi</a>
             <a class="collapse-item" href="#">List Transaksi</a>
             <a class="collapse-item" href="#">Riwayat Transaksi</a>
             </div>
         </div>
     </li>
-    {{-- <li class="nav-item {{active('transaction.create')}}">
-        <a class="nav-link" href="{{route('transaction.create')}}">
+    {{-- <li class="nav-item {{active('transaksi.create')}}">
+        <a class="nav-link" href="{{route('transaksi.create')}}">
             <i class="fas fa-fw fa-book"></i>
             <span>Transaksi</span>
         </a>
     </li>
-    <li class="nav-item {{active('transaction.index')}}">
-        <a class="nav-link" href="{{route('transaction.index')}}">
+    <li class="nav-item {{active('transaksi.index')}}">
+        <a class="nav-link" href="{{route('transaksi.index')}}">
             <i class="fas fa-fw fa-book"></i>
             <span>List Transaksi</span>
         </a>
     </li>
-    <li class="nav-item {{active('transaction.history')}}">
-        <a class="nav-link" href="{{route('transaction.history')}}">
+    <li class="nav-item {{active('transaksi.history')}}">
+        <a class="nav-link" href="{{route('transaksi.history')}}">
             <i class="fas fa-fw fa-book"></i>
             <span>Riwayat Transaksi</span>
         </a>
