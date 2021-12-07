@@ -45,8 +45,8 @@
         <div id="transaksi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{route('transaksi.create')}}">Transaksi</a>
-            <a class="collapse-item" href="#">List Transaksi</a>
-            <a class="collapse-item" href="#">Riwayat Transaksi</a>
+            <a class="collapse-item" href="{{route('transaksi.index')}}">List Transaksi</a>
+            <a class="collapse-item" href="{{route('transaksi.create')}}">Riwayat Transaksi</a>
             </div>
         </div>
     </li>
