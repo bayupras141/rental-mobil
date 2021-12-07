@@ -32,6 +32,12 @@
         </a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="{{route('paket.index')}}">
+            <i class="fas fa-fw fa-tags"></i>
+            <span>Paket</span>
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="{{route('pelanggan.index')}}">
             <i class="fas fa-fw fa-user"></i>
             <span>Customer</span>

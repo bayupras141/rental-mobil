@@ -57,7 +57,6 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        //end
         $this->validate($request, [
               'nama' =>                'required',
                 'username' =>            'required',
@@ -82,10 +81,17 @@ class PelangganController extends Controller
             ]
         );
 
-        return response()->json([
-            'status' => 'sukses',
-            'message'=>'Pelanggan berhasil Ditambahkan'
-        ],200);
+        if(!$request->data_id == ''){
+            return response()->json([
+                'status' => 'sukses',
+                'message'=>'Pelanggan berhasil Diubah'
+            ],200);
+        } else {
+            return response()->json([
+                'status' => 'sukses',
+                'message'=>'Pelanggan berhasil Ditambahkan'
+            ],200);
+        }
     }
 
     /**
@@ -105,9 +111,9 @@ class PelangganController extends Controller
      * @param  \App\Models\Pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Pelanggan $pelanggan)
     {
-        $pelanggan = Pelanggan::where('id',$id)->first();
+
         return response()->json($pelanggan,200);
     }
 

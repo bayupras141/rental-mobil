@@ -52,8 +52,8 @@ class HomeController extends Controller
         //         "pointBackgroundColor" => "#e74a3b",
         //         "pointHoverBackgroundColor" => "#e74a3b",
         //         "pointHoverBorderColor" => "#e74a3b",
-        //         'data' => $transaction_data,
-        //         // 'data' => [1,2,3,4,5,6,7,8,9,10,11,12]
+        //         // 'data' => $transaction_data,
+        //         'data' => [1,2,3,4,5,6,7,8,9,10,11,12]
         //     ]
         // ])
         //  ->optionsRaw("{

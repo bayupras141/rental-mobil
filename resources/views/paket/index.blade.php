@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title', 'Mobil')
+@section('title', 'Paket')
 @section('content')
 {{-- card --}}
 <div class="col-lg-12">
@@ -20,9 +20,7 @@
                     <tr>
                         <th>#</th>
                         <th>Nama</th>
-                        <th>Nopol</th>
-                        <th>Warnra</th>
-                        <th>Status</th>
+                        <th>Harga</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -59,21 +57,8 @@
                         <input type="text" class="form-control dt-full-name required" id="nama" name="nama" required="">
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="basic-icon-default-post">Nomor Plat</label>
-                        <input type="text" id="nopol" class="form-control dt-post required" name="nopol">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="basic-icon-default-post">Warna</label>
-                        <input type="text" id="warna" class="form-control dt-post required" name="warna">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="basic-icon-default-post">Status</label>
-                        <select name="status" id="status" class="form-control dt-post required">
-                            <option  selected disabled >Pilih</option>
-                            <option value="tersedia" id="tersedia">Tersedia</option>
-                            <option value="sedang disewa" id="disewa">Sedang Disewa</option>
-                        </select>
-                        <!-- end form  -->
+                        <label class="form-label" for="basic-icon-default-post">Harga</label>
+                        <input type="number" id="harga" class="form-control dt-post required" name="harga">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cencel</button>
@@ -95,6 +80,15 @@
     <script src="{{ asset('app-assests/vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('app-assests/vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
     <script>
+        // format rupiah
+        const rupiah = (number)=>{
+          return new Intl.NumberFormat("id-ID", {
+            style: "currency",
+            currency: "IDR"
+          }).format(number);
+        }
+        // end format rupiah
+
         // start
         $(document).ready(function($){
             $.ajaxSetup({
@@ -106,20 +100,22 @@
             var table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('mobil.index') }}",
+                ajax: "{{ route('paket.index') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     {data: 'nama', name: 'nama'},
-                    {data: 'nopol', name: 'nopol'},
-                    {data: 'warna', name: 'warna'},
-                    {data: 'status', name: 'status'},
+                    {data: 'harga', name: 'harga', 
+                        render: (data)=>{
+                            return rupiah(data);
+                        }
+                    },
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             });
 
             // show modal
             $('#createNewData').click(function () { 
-                $('#saveBtn').val("create-Mobil");
+                $('#saveBtn').val("create-Paket");
                 $('#data_id').val('');
                 $('#dataForm').trigger("reset");
                 $('#modalHeading').html("Tambah Data");
@@ -135,7 +131,7 @@
                 $(this).html('Sending..');
                 $.ajax({
                   data: $('#dataForm').serialize(),
-                  url: "{{route('mobil.store')}}",
+                  url: "{{route('paket.store')}}",
                   type: "POST",
                   dataType: 'json',
                   success: function (data) {
@@ -170,9 +166,7 @@
                     // get data respone
                     $('#data_id').val(data.id);
                     $('#nama').val(data.nama);
-                    $('#nopol').val(data.nopol);
-                    $('#warna').val(data.warna);
-                    $('#status').val(data.status);
+                    $('#harga').val(data.harga);
                 })
             });
             // end
@@ -198,7 +192,7 @@
                         )
                         $.ajax({
                             type: "DELETE",
-                            url: "{{ route('mobil.store') }}"+'/'+data_id,
+                            url: "{{ route('paket.store') }}"+'/'+data_id,
                             success: function (data) {
                                 table.draw();
                             },
