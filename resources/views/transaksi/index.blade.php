@@ -2,12 +2,13 @@
 @section('title', 'List Transaksi')
 @section('content')
 <div class="col-lg-12">
-    <div class="card shadow-sm mb-4">
+    <div class="card mb-4">
+    
         <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">@yield('title')</h6>
+            <h6 class="m-0 font-weight-bold text-primary">@yield('title')</h6>
         </div>
         <div class="card-body">
-            <table class="table table-sm table-bordered" id="transaction-table">
+            <table class="data-table table table-sm table-bordered table-striped" id="data-table">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -20,10 +21,14 @@
                         <th>Action</th>
                     </tr>
                 </thead>
+                <tbody>
+
+                </tbody>
             </table>
         </div>
     </div>
 </div>
+{{-- end card --}}
 @endsection
 @push('scripts')
     <script src="{{ asset('app-assests/vendors/js/tables/datatable/jquery.dataTables.min.js') }}"></script>
@@ -50,9 +55,9 @@
                     {data: 'invoice', name: 'invoice'},
                     {data: 'tgl_sewa', name: 'tgl_sewa'},
                     {data: 'tgl_kembali', name: 'tgl_kembali'},
+                    {data: 'nama_pelanggan', name: 'nama_pelanggan'},
+                    {data: 'nama', name: 'nama'},
                     {data: 'status', name: 'status'},
-                    {data: 'pelanggan', name: 'pelanggan'},
-                    {data: 'mobil', name: 'mobil'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             });
