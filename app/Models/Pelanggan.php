@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Transaksi;
 
 class Pelanggan extends Model
 {
@@ -23,4 +24,9 @@ class Pelanggan extends Model
     protected $hidden = [
         'password',
     ];
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class);
+    }
 }

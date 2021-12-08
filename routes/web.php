@@ -3,11 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MobilController;
 use App\Http\Controllers\PelangganController;
-<<<<<<< HEAD
 use App\Http\Controllers\PaketController;
-=======
 use App\Http\Controllers\TransaksiController;
->>>>>>> 3279c6315ab2ce66b02744410232beab5d5b8b28
 
 /*
 |--------------------------------------------------------------------------
@@ -28,11 +25,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// route resource Mobil 
 Route::resource('mobil', MobilController::class);
 Route::resource('pelanggan', PelangganController::class);
-<<<<<<< HEAD
 Route::resource('paket', PaketController::class);
-=======
 Route::resource('transaksi', TransaksiController::class);
->>>>>>> 3279c6315ab2ce66b02744410232beab5d5b8b28

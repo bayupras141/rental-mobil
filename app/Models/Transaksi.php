@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Mobil;
 use App\Models\Pelanggan;
+use App\Models\Paket;
 class Transaksi extends Model
 {
     use HasFactory;
@@ -32,6 +33,10 @@ class Transaksi extends Model
     public function mobil()
     {
         return $this->hasMany(Mobil::class);
+    }
+    public function paket()
+    {
+        return $this->hasMany(Paket::class);
     }
 
 }
