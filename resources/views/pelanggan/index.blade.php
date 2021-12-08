@@ -130,9 +130,17 @@
     <script src="{{ asset('app-assests/vendors/js/tables/datatable/responsive.bootstrap4.js') }}"></script>
     <script src="{{ asset('app-assests/vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('app-assests/vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
-
     <script>
-        // start function
+        // format rupiah
+        const rupiah = (number)=>{
+          return new Intl.NumberFormat("id-ID", {
+            style: "currency",
+            currency: "IDR"
+          }).format(number);
+        }
+        // end format rupiah
+
+        // start
         $(document).ready(function($){
             $.ajaxSetup({
                 headers: {
@@ -140,7 +148,6 @@
                 }
             });
 
-            // get data table
             var table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
@@ -157,8 +164,8 @@
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             });
-            // end data table
 
+            // show modal
             // show modal
             $('#createNewData').click(function () { 
                 $('#saveBtn').val("create-pelanggan");
@@ -171,8 +178,8 @@
             });
             // end
 
-            // store process
-            $('#saveBtn').click(function (e) {
+ // store process
+ $('#saveBtn').click(function (e) {
                 e.preventDefault();
                 $(this).html('Simpan');
                 $.ajax({
@@ -197,7 +204,6 @@
                 });
             });
             // end store process
-
             // edit data
             $('body').on('click', '.editData', function () {
                 var data_id = $(this).data('id');
@@ -223,7 +229,6 @@
                 })  
             });
             // end
-
             // delete
             $('body').on('click', '.deleteData', function () {
                 var data_id = $(this).data("id");
@@ -258,6 +263,5 @@
             });
             // end delete
         });
-        // end function
     </script>
 @endpush

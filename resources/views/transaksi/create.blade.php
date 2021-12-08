@@ -23,14 +23,14 @@
                         </div>
                             <div class="col-lg-2">
                             <div class="form-check form-check-inline">
-                                <select name="pelanggan" class="custom-select">
+                                <select name="customer" class="custom-select">
                                     <option value="old" selected>Lama</option>
                                     <option value="new">Baru</option>
                                 </select>
                             </div>
                             </div>
                         </div>
-                        <div class="new_pelanggaan"></div>
+                        <div class="new_customer"></div>
                     </div>
                 </div>
                 <div class="row" id="product">
@@ -74,3 +74,14 @@
     </div>
 </div>
 @endsection
+@push('scripts')
+    <script src="{{ asset('app-assests/vendors/js/tables/datatable/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('app-assests/vendors/js/tables/datatable/datatables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('app-assests/vendors/js/tables/datatable/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('app-assests/vendors/js/tables/datatable/responsive.bootstrap4.js') }}"></script>
+    <script src="{{ asset('app-assests/vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('app-assests/vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
+<script>
+
+</script>
+@endpush

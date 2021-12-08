@@ -38,7 +38,14 @@
     <script src="{{ asset('app-assests/vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('app-assests/vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
     <script>
-        // start
+        // 
+        const rupiah = (number)=>{
+          return new Intl.NumberFormat("id-ID", {
+            style: "currency",
+            currency: "IDR"
+          }).format(number);
+        }
+        // end format rupiah
         $(document).ready(function($){
             $.ajaxSetup({
                 headers: {
