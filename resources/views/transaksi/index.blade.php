@@ -18,7 +18,6 @@
                         <th>Pelanggan</th>
                         <th>Mobil</th>
                         <th>Status</th>
-                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,7 +64,6 @@
                     {data: 'nama_pelanggan', name: 'nama_pelanggan'},
                     {data: 'nama', name: 'nama'},
                     {data: 'status', name: 'status'},
-                    {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             });
 

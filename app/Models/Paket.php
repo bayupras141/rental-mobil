@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Transaksi;
 class Paket extends Model
 {
     use HasFactory;
@@ -14,4 +14,10 @@ class Paket extends Model
         'nama',
         'harga',
     ];
+
+    // belongsTo transaksi
+    public function transaksi()
+    {
+        return $this->belongsTo(Transaksi::class);
+    }
 }

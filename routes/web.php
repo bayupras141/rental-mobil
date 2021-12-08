@@ -25,7 +25,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// route resource Mobil 
 Route::resource('mobil', MobilController::class);
 Route::resource('pelanggan', PelangganController::class);
 Route::resource('paket', PaketController::class);
