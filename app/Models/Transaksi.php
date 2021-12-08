@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Mobil;
+use App\Models\Pelanggan;
 class Transaksi extends Model
 {
     use HasFactory;
