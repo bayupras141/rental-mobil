@@ -1,10 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MobilController;
-use App\Http\Controllers\PelangganController;
-use App\Http\Controllers\PaketController;
-use App\Http\Controllers\TransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,16 +12,18 @@ use App\Http\Controllers\TransaksiController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// login
-Route::get('/', function () {
+Auth::routes();
+// login admin
+Route::get('admin/', function () {
     return view('auth.login');
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::resource('mobil', MobilController::class);
-Route::resource('pelanggan', PelangganController::class);
-Route::resource('paket', PaketController::class);
-Route::resource('transaksi', TransaksiController::class);
+Route::prefix('admin')
+    ->group(function(){
+        Route::resources([
+                'mobil'         => App\Http\Controllers\Admin\MobilController::class,
+                'pelanggan'     => App\Http\Controllers\Admin\PelangganController::class,
+                'paket'         => App\Http\Controllers\Admin\PaketController::class,
+                'transaksi'     => App\Http\Controllers\Admin\TransaksiController::class,
+            ]);
+        Route::get('home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
+});

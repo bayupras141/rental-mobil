@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Mobil;
 use App\Models\Pelanggan;
@@ -61,6 +61,6 @@ class HomeController extends Controller
         //          'duration': 2000
         //      }
         //  }");
-        return view('home', compact('mobil', 'customer'));
+        return view('admin.home', compact('mobil', 'customer'));
     }
 }

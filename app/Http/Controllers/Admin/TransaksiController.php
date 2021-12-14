@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;  
 use App\Models\Mobil;
+use App\Models\Pelanggan;
+use App\Models\Paket;
 use DataTables;
 
 
@@ -29,7 +31,7 @@ class TransaksiController extends Controller
                     ->addIndexColumn()
                     ->make(true);
         }
-        return view('transaksi.index');
+        return view('admin.transaksi.index');
     }
 
     /**
@@ -39,9 +41,11 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        $id = DB::table('tb_mobil')->get();
-        $id_pelanggan = DB::table('tb_pelanggan')->get();
-        return view('transaksi.create',compact('id','id_pelanggan'));
+        $mobil = Mobil::all();
+        $invoice = Date('Ymdhis');
+        $pelanggan = Pelanggan::all();
+        $paket = Paket::all();
+        return view('admin.transaksi.create',compact('mobil' ,'pelanggan', 'invoice', 'paket'));
     }
 
     /**

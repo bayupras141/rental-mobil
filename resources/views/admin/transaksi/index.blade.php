@@ -59,9 +59,6 @@
                     {data: 'status', name: 'status'},
                 ]
             });
-
-            // show modal
-        
         });
     </script>
 @endpush

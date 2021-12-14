@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Pelanggan;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class PelangganController extends Controller
         }
 
 
-        return view('pelanggan.index');
+        return view('admin.pelanggan.index');
     }
 
     /**
