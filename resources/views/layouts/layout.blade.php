@@ -114,4 +114,5 @@
     </div>
     @stack('scripts')
 </body>
+</body>
 </html>

@@ -15,11 +15,12 @@
                         <input type="text" id="invoice" class="form-control dt-post required" name="invoice" readonly="" value="{{$invoice}}">
                     </div>
                 </div>
+
                 <div class="form-group">
                     <div class="col">
                         <div class="form-group row">
                             <label class="col-lg-12">Pelanggan</label>
-                            <div class="col-lg-10">
+                            <div class="col">
                                 <select name="id_pelanggan" id="id_pelanggan"  class="required form-control dt-post  @error('id_pelanggan') is-invalid @enderror ">
                                     <option  selected disabled >Pilih</option>
                                         @foreach($pelanggan as $row)
@@ -28,6 +29,7 @@
                                 </select>        
                             </div>
                         </div>
+
                         <div class="row" id="product">
                             <div class="col">
                                 <div class="form-group">
@@ -66,12 +68,11 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label>Tanggal Kembali</label>
-                                    <input type="date" name="tgl_kembali" class="form-control datepicker" required="">
+                                    <input type="date" name="tgl_kembali" class="form-control datepicker" required="" readonly="" value="">
                                 </div>
                             </div>
                         </div>
                         
-
                         <div class="row">
                             <div class="col">
                                 <div class="form-gorup">

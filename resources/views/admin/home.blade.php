@@ -42,7 +42,7 @@
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Transaksi</div>
-                    {{-- <div class="h5 mb-0 font-weight-bold text-gray-800">{{$transaction->where('status','selesai')->get()->count()}}</div> --}}
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$transaksi}}</div>
                 </div>
                 <div class="col-auto">
                     <i class="fas fa-book fa-2x text-gray-300"></i>
@@ -59,7 +59,7 @@
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Transaksi Aktif</div>
-                    {{-- <div class="h5 mb-0 font-weight-bold text-gray-800">{{$transaction->where('status','proses')->get()->count()}}</div> --}}
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$transaksi_aktif}}</div>
                 </div>
                 <div class="col-auto">
                     <i class="fas fa-book fa-2x text-gray-300"></i>

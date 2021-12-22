@@ -13,11 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
-// login admin
+
 Route::get('admin/', function () {
     return view('auth.login');
-});
+})->name('admin');
+
 Route::prefix('admin')
+    ->middleware('auth')
     ->group(function(){
         Route::resources([
                 'mobil'         => App\Http\Controllers\Admin\MobilController::class,
@@ -27,3 +29,5 @@ Route::prefix('admin')
             ]);
         Route::get('home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
 });
+
+Route::get('/', [App\Http\Controllers\Pelanggan\IndexController::class, 'index']);

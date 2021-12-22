@@ -21,8 +21,6 @@ class MobilController extends Controller
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
-
-                        
                       
                         $btn =  '
                             <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="edit" class="text-secondary editData">
@@ -68,22 +66,33 @@ class MobilController extends Controller
      */
     public function store(Request $request)
     {
+        
+        // dd($request);
+
         // validate request
         $this->validate($request, [
             'nama'   => 'required',
             'nopol'  => 'required',
             'warna'  => 'required',
-            'status' => 'required'
+            'status' => 'required',
+            'foto'   => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        
+        if($request->file('foto')){
+            $imgName = $request->file('foto')->store('picture', 'public');
+        }
 
         // mobil update or create
         $mobil = Mobil::updateOrCreate(
+            
             ['id' => $request->data_id],
             [
                 'nama'      => $request->nama,
                 'nopol'     => $request->nopol,
                 'warna'     => $request->warna,
-                'status'    => $request->status
+                'status'    => $request->status,
+                'foto'      => $imgName,
             ]
         );
 

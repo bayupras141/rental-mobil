@@ -23,6 +23,7 @@
                         <th>Nopol</th>
                         <th>Warnra</th>
                         <th>Status</th>
+                        <th>Foto</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -47,7 +48,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="dataForm" name="dataForm" class="form-horizontal">
+                <form id="dataForm" name="dataForm" class="dataForm form-horizontal" enctype="multipart/form-data">
                     <!-- validator -->
                     <ul class="list-group" id="errors-validate">
                     </ul>
@@ -73,7 +74,18 @@
                             <option value="tersedia" id="tersedia">Tersedia</option>
                             <option value="sedang disewa" id="disewa">Sedang Disewa</option>
                         </select>
-                        <!-- end form  -->
+                    </div>
+
+                    <div class="form-group">
+                        <label for="picture">Foto</label>
+                        <br>
+                        <input name="foto" id="foto" type="file" class="form-control dt-post required" accept="image/*" >
+                    </div>
+                    {{-- preview image --}}
+                    <div class="form-group">
+                        <label for="foto">Preview</label>
+                        <br>
+                        <img id="preview" src="" alt="" width="200" height="200">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cencel</button>
@@ -96,20 +108,13 @@
     <script src="{{ asset('app-assests/vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
     <script>
         // start
-        const rupiah = (number)=>{
-          return new Intl.NumberFormat("id-ID", {
-            style: "currency",
-            currency: "IDR"
-          }).format(number);
-        }
-
+        
         $(document).ready(function($){
             $.ajaxSetup({
                 headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-
             var table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
@@ -120,6 +125,7 @@
                     {data: 'nopol', name: 'nopol'},
                     {data: 'warna', name: 'warna'},
                     {data: 'status', name: 'status'},
+                    {data: 'foto', name: 'foto'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             });
@@ -135,38 +141,74 @@
                 $('#saveBtn').prop('disabled', false);
             });
 
+            $('#foto').change(function(){    
+               let reader = new FileReader();
+               reader.onload = (e) => { 
+                 $('#preview').attr('src', e.target.result); 
+               }
+               reader.readAsDataURL(this.files[0]); 
+            });
+
             // store process
-            $('#saveBtn').click(function (e) {
-                e.preventDefault();
-                $('#saveBtn').html("Simpan");  
-                $(this).html('Sending..');
+            $('#dataForm').submit(function(e) {
+                e.preventDefault();  
+                var formData = new FormData(this);
+            
                 $.ajax({
-                  data: $('#dataForm').serialize(),
-                  url: "{{route('mobil.store')}}",
-                  type: "POST",
-                  dataType: 'json',
-                  success: function (data) {
+                    type:'POST',
+                    url: "{{route('mobil.store')}}",
+                    data: formData,
+                    cache:false,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
                       if(data.status == 'sukses'){
                             $('#modalBox').modal('hide');
                             Swal.fire("Selamat", data.message , "success");
                             $('#dataForm').trigger("reset");
                             table.draw();
-
                         }else{
                             $('#message-error').html(data.message).show()
                         }
-                  },
-                  error: function (data) {
+                    },
+                    error: function (data) {
                       console.log('Error:', data);
                       $('#saveBtn').html('Save');
                   }
-              });
+                });
             });
-            // end store process
 
+            // $('#saveBtn').click(function (e) {
+            //     e.preventDefault();
+            //     $('#saveBtn').html("Simpan");  
+            //     $(this).html('Sending..');
+
+            //     var formData = new FormData('#dataForm');
+            //     $.ajax({
+                    
+            //       data: new FormData('#dataForm'),
+            //       url: "{{route('mobil.store')}}",
+            //       type: "POST",
+            //       dataType: 'json',
+            //       success: function (data) {
+            //           if(data.status == 'sukses'){
+            //                 $('#modalBox').modal('hide');
+            //                 Swal.fire("Selamat", data.message , "success");
+            //                 $('#dataForm').trigger("reset");
+            //                 table.draw();
+            //             }else{
+            //                 $('#message-error').html(data.message).show()
+            //             }
+            //       },
+            //       error: function (data) {
+            //           console.log('Error:', data);
+            //           $('#saveBtn').html('Save');
+            //       }
+            //   });
+            // });
+            // end store process
             // edit data
             $('body').on('click', '.editData', function () {
-
                 var data_id = $(this).data('id');
                 $.get($(location).attr('href') +'/' + data_id +'/edit', function (data) {
                     $('#saveBtn').html("Update");  
@@ -180,10 +222,10 @@
                     $('#nopol').val(data.nopol);
                     $('#warna').val(data.warna);
                     $('#status').val(data.status);
+                    $('#foto').val(data.foto);
                 })
             });
             // end
-
             // delete
             $('body').on('click', '.deleteData', function () {
                 var data_id = $(this).data("id");

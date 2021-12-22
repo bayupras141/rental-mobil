@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Mobil;
 use App\Models\Pelanggan;
+use App\Models\Transaksi;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $transaksi = Transaksi::all()->count();
+        $transaksi_aktif = Transaksi::where('status', 'Belum Bayar')->count();
         $mobil = Mobil::where('status','tersedia')->get()->count();
         $customer = Pelanggan::all()->count();
         // $transaction  = $this->transaction;
@@ -61,6 +64,6 @@ class HomeController extends Controller
         //          'duration': 2000
         //      }
         //  }");
-        return view('admin.home', compact('mobil', 'customer'));
+        return view('admin.home', compact('mobil', 'customer', 'transaksi', 'transaksi_aktif'));
     }
 }
