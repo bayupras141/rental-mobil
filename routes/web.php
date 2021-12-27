@@ -31,3 +31,4 @@ Route::prefix('admin')
 });
 
 Route::get('/', [App\Http\Controllers\Pelanggan\IndexController::class, 'index']);
+Route::get('/detail/{id}', [App\Http\Controllers\Pelanggan\IndexController::class, 'detail'])->name('detail');

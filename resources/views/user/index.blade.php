@@ -12,7 +12,7 @@
                 <p class="card-text">{{ $a->nama }}</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <a class="btn btn-sm btn-outline-secondary" href="{{ route('detail',$a->id) }}"> View</a>
                   </div>
                   @if($a->status == "Tersedia")
                     <span class="badge badge-success">
@@ -36,6 +36,7 @@
         <div class="col-lg-12">
             {{-- {{ $konten->links() }} --}}
         </div>
+        
     </div>
 </div>
 @endsection
