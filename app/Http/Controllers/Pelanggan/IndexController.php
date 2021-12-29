@@ -15,4 +15,11 @@ class IndexController extends Controller
         $data = Mobil::all();
         return view('user.index', compact('data'));
     }
+    public function detail($id)
+    {   
+        $paket = Paket::all();
+        $data = Mobil::where('id',$id)->first();
+        return view('user.detail', compact('data','paket'));
+
+    }
 }
