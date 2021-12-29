@@ -19,15 +19,19 @@ Route::get('admin/', function () {
 })->name('admin');
 
 Route::prefix('admin')
-    ->middleware('auth')
-    ->group(function(){
-        Route::resources([
-                'mobil'         => App\Http\Controllers\Admin\MobilController::class,
-                'pelanggan'     => App\Http\Controllers\Admin\PelangganController::class,
-                'paket'         => App\Http\Controllers\Admin\PaketController::class,
-                'transaksi'     => App\Http\Controllers\Admin\TransaksiController::class,
-            ]);
-        Route::get('home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
+->middleware('auth')
+->group(function(){
+    Route::resources([
+        'mobil'         => App\Http\Controllers\Admin\MobilController::class,
+        'pelanggan'     => App\Http\Controllers\Admin\PelangganController::class,
+        'paket'         => App\Http\Controllers\Admin\PaketController::class,
+        'transaksi'     => App\Http\Controllers\Admin\TransaksiController::class,
+    ]);
+    Route::get('home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
 });
 
 Route::get('/', [App\Http\Controllers\Pelanggan\IndexController::class, 'index']);
+
+Route::get('/login', function () {
+    // return view('auth.login');
+})->name('login');

@@ -30,11 +30,11 @@
                             </div>
                         </div>
 
-                        <div class="row" id="product">
+                        <div class="row" id="mobil_id">
                             <div class="col">
                                 <div class="form-group">
                                     <label>Mobil</label>
-                                    <select name="id" id="id"  class="required form-control dt-post  @error('id') is-invalid @enderror ">
+                                    <select name="mobil_id" id="mobil_id"  class="required form-control dt-post  @error('id') is-invalid @enderror ">
                                         <option  selected disabled >Pilih</option>
                                         @foreach($mobil as $row)
                                         <option value="{{$row->id}}"  >{{ $row->nama }}</option> 
@@ -48,7 +48,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label>Paket</label>
-                                    <select name="id" id="id"  class="required form-control dt-post  @error('id') is-invalid @enderror ">
+                                    <select name="paket_id" id="paket_id" class="required form-control dt-post  @error('id') is-invalid @enderror ">
                                         <option  selected disabled >Pilih</option>
                                         @foreach($paket as $row)
                                         <option value="{{$row->id}}"  >{{ $row->nama }}</option> 
@@ -72,7 +72,21 @@
                                 </div>
                             </div>
                         </div>
-                        
+
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select name="status" id="status"  class="required form-control dt-post  @error('status') is-invalid @enderror ">
+                                <option  selected disabled >Pilih</option>
+                                <option value="Belum Bayar">Belum Bayar</option>
+                                <option value="Lunas">Lunas</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Total Bayar</label>
+                            <input type="number" name="total_bayar" id="total_bayar" class="form-control dt-post required" readonly="">
+                        </div>
+
                         <div class="row">
                             <div class="col">
                                 <div class="form-gorup">

@@ -115,6 +115,8 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
+            // show foto on table
             var table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
@@ -125,7 +127,11 @@
                     {data: 'nopol', name: 'nopol'},
                     {data: 'warna', name: 'warna'},
                     {data: 'status', name: 'status'},
-                    {data: 'foto', name: 'foto'},
+                    {data: 'foto', name: 'foto',
+                        render: function(data, type, row){
+                            return '<img src="{{ asset('storage/') }}/'+data+'" width="50" height="50">';
+                        }
+                    },
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             });
