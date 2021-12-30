@@ -166,7 +166,6 @@
             });
 
             // show modal
-            // show modal
             $('#createNewData').click(function () { 
                 $('#saveBtn').val("create-pelanggan");
                 $('#data_id').val('');
@@ -178,8 +177,8 @@
             });
             // end
 
- // store process
- $('#saveBtn').click(function (e) {
+            // store process
+            $('#saveBtn').click(function (e) {
                 e.preventDefault();
                 $(this).html('Simpan');
                 $.ajax({

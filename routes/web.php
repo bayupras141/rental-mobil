@@ -28,11 +28,20 @@ Route::prefix('admin')
         'transaksi'     => App\Http\Controllers\Admin\TransaksiController::class,
     ]);
     Route::get('home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
+    Route::get('detail-transaksi', [App\Http\Controllers\Admin\DetailController::class, 'index'])->name('transaksi.detail');
+    Route::get('transaksi-bayar/{id}', [App\Http\Controllers\Admin\DetailController::class, 'bayar'])->name('transaksi.bayar');
+    Route::get('transaksi-print/{id}', [App\Http\Controllers\Admin\DetailController::class, 'print'])->name('transaksi.print');
+    Route::get('transaksi-pengembalian', [App\Http\Controllers\Admin\DetailController::class, 'pengembalian'])->name('transaksi.pengembalian');
+    Route::get('transaksi-kembali/{id}', [App\Http\Controllers\Admin\DetailController::class, 'kembali'])->name('transaksi.kembali');
 });
 
 Route::get('/', [App\Http\Controllers\Pelanggan\IndexController::class, 'index']);
 
+<<<<<<< HEAD
 Route::get('/login', function () {
 })->name('login');
 Route::get('/detail/{id}', [App\Http\Controllers\Pelanggan\IndexController::class, 'detail'])->name('detail');
 
+=======
+Route::get('/detail/{id}', [App\Http\Controllers\Pelanggan\IndexController::class, 'detail'])->name('detail');
+>>>>>>> e724368c3f6b4c8be5ab9593c18eb13501757797

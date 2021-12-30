@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-
 <div class="container">
+<<<<<<< HEAD
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             @forelse ($data as $a)
           <div class="col">
@@ -25,18 +25,17 @@
               @endif
             </div>
           </div>
-        </div>
-      </div>
-    @empty
-    <h3>Tidak ada data</h3>
-    @endforelse
-  </div>
 
-  <div class="row justify-content-center">
-        <div class="col-lg-12">
-            {{-- {{ $konten->links() }} --}}
-        </div>
-        
+@empty
+<div class="col">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <p class="card-text">Tidak ada data</p>
     </div>
+  </div>
+</div>
+@endforelse
+</div>
+
 </div>
 @endsection

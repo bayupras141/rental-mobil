@@ -28,15 +28,15 @@ class Transaksi extends Model
     
     public function pelanggan()
     {
-        return $this->hasMany(Pelanggan::class);
+        return $this->belongsTo(Pelanggan::class, 'pelanggan_id');
     }
     public function mobil()
     {
-        return $this->hasMany(Mobil::class);
+        return $this->belongsTo(Mobil::class, 'mobil_id');
     }
     public function paket()
     {
-        return $this->hasMany(Paket::class);
+        return $this->belongsTo(Paket::class, 'paket_id');
     }
 
 }
