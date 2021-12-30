@@ -80,11 +80,12 @@
                         <td class="no">Tanggal Kembali</td><td>:</td>
                         <td class="no">{{$transaksi->tgl_kembali}}</td>
                       </tr>
-                      <tr>
-                        <td class="no">Status</td><td>:</td>
-                        <td class="no">{{$transaksi->status}}</td>
-                      </tr>
                     
+                    <tr>
+                    <td class="no">Jenis Paket</td><td> : </td>
+                    <td class="no">{{$transaksi->paket->nama}}</td>
+                    </tr>
+
                     <tr>
                     <td class="no">Harga</td><td> : </td>
                     <td class="no">Rp. {{number_format($transaksi->paket->harga,0,',','.')}}</td>
@@ -108,7 +109,11 @@
                     <td class="no"></td><td class="bot"></td>
                     <td class="no">Rp. {{number_format($transaksi->total_bayar,0,',','.')}}</td>
                     </tr>
-                
+                    
+                    <tr>
+                      <td ></td><td ></td>
+                      <td style="padding-left: 180px;">{{$transaksi->status}}</td>
+                    </tr>
                     
                 </table>
             </div>

@@ -75,7 +75,7 @@ class DetailController extends Controller
     public function printTransaksi()
     {
         $pendapatan = Transaksi::where('status','Lunas')->sum('total_bayar');
-        $transaksi = Transaksi::with('mobil', 'pelanggan', 'paket')->get();
+        $transaksi = Transaksi::with('mobil', 'pelanggan', 'paket')->where('status', 'lunas')->get();
         return $pdf = PDF::loadView('admin.laporan.transaksi', compact('transaksi', 'pendapatan'))->stream();
     }
 }
