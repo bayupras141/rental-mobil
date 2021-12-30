@@ -26,7 +26,7 @@ class Mobil extends Model
     // belongsTo transaksi
     public function transaksi()
     {
-        return $this->belongsTo(Transaksi::class);
+        return $this->hasMany(Transaksi::class);
     }
 
 }

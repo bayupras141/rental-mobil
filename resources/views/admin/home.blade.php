@@ -58,7 +58,7 @@
         <div class="card-body">
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Transaksi Aktif</div>
+                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Transaksi Belum Bayar</div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{$transaksi_aktif}}</div>
                 </div>
                 <div class="col-auto">
@@ -69,15 +69,26 @@
     </div>
     </a>
 </div>
-<div class="col-lg-6">
-    <div class="card shadow-sm mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-danger">Transaksi Tahun {{date('Y')}}</h6>
-        </div>
+<div class="col-xl-3 col-md-6 mb-4">
+    <a href="#" style="text-decoration:none;">
+    <div class="card border-left-danger shadow-sm h-100 py-2">
         <div class="card-body">
-                {{-- {!! $chartjs->render() !!} --}}
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Pendapatan</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"> 
+                    {{-- format rupiah --}}
+                    Rp. {{number_format($pendapatan,0,',','.')}}
+                        {{-- {{$pendapatan}} --}}
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <i class="fas fa-book fa-2x text-gray-300"></i>
+                </div>
+            </div>
         </div>
     </div>
+    </a>
 </div>
 @endsection
 @push('scripts')

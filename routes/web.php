@@ -28,14 +28,13 @@ Route::prefix('admin')
         'transaksi'     => App\Http\Controllers\Admin\TransaksiController::class,
     ]);
     Route::get('home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
+    Route::get('detail-transaksi', [App\Http\Controllers\Admin\DetailController::class, 'index'])->name('transaksi.detail');
+    Route::get('transaksi-bayar/{id}', [App\Http\Controllers\Admin\DetailController::class, 'bayar'])->name('transaksi.bayar');
+    Route::get('transaksi-print/{id}', [App\Http\Controllers\Admin\DetailController::class, 'print'])->name('transaksi.print');
+    Route::get('transaksi-pengembalian', [App\Http\Controllers\Admin\DetailController::class, 'pengembalian'])->name('transaksi.pengembalian');
+    Route::get('transaksi-kembali/{id}', [App\Http\Controllers\Admin\DetailController::class, 'kembali'])->name('transaksi.kembali');
 });
 
 Route::get('/', [App\Http\Controllers\Pelanggan\IndexController::class, 'index']);
-<<<<<<< HEAD
 
-Route::get('/login', function () {
-    // return view('auth.login');
-})->name('login');
-=======
 Route::get('/detail/{id}', [App\Http\Controllers\Pelanggan\IndexController::class, 'detail'])->name('detail');
->>>>>>> e09251769d19aeee3d4109cc72c96b4ba99f4016
