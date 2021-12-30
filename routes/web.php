@@ -31,11 +31,8 @@ Route::prefix('admin')
 });
 
 Route::get('/', [App\Http\Controllers\Pelanggan\IndexController::class, 'index']);
-<<<<<<< HEAD
 
 Route::get('/login', function () {
-    // return view('auth.login');
 })->name('login');
-=======
 Route::get('/detail/{id}', [App\Http\Controllers\Pelanggan\IndexController::class, 'detail'])->name('detail');
->>>>>>> e09251769d19aeee3d4109cc72c96b4ba99f4016
+
