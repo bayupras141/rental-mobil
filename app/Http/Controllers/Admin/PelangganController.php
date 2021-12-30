@@ -59,10 +59,8 @@ class PelangganController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-              'nama' =>                'required',
-                'username' =>            'required',
+                'nama' =>                'required',
                 'nik' =>                 'required',
-                'email' =>               'required',
                 'alamat' =>              'required',
                 'no_hp' =>               'required',
                 'jenis_kelamin' =>       'required'
@@ -72,10 +70,7 @@ class PelangganController extends Controller
             ['id' => $request->data_id],
             [
                 'nama' => $request->nama,
-                'username' => $request->username,
                 'nik' => $request->nik,
-                'email' => $request->email,
-                'password' => $request->username,
                 'alamat' => $request-> alamat,
                 'no_hp' => $request-> no_hp,
                 'jenis_kelamin' => $request-> jenis_kelamin

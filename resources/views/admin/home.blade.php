@@ -2,7 +2,7 @@
 @section('title','Dashboard')
 @section('content')
 <div class="col-xl-3 col-md-6 mb-4">
-    <a href="#" style="text-decoration:none;">
+    <a href="{{route('print.mobil')}}" style="text-decoration:none;">
     <div class="card border-left-danger shadow-sm h-100 py-2">
         <div class="card-body">
             <div class="row no-gutters align-items-center">
@@ -19,7 +19,7 @@
     </a>
 </div>
 <div class="col-xl-3 col-md-6 mb-4">
-    <a href="#" style="text-decoration:none;">
+    <a href="{{route('print.pelanggan')}}" style="text-decoration:none;">
     <div class="card border-left-danger shadow-sm h-100 py-2">
         <div class="card-body">
             <div class="row no-gutters align-items-center">
@@ -36,7 +36,7 @@
     </a>
 </div>
 <div class="col-xl-3 col-md-6 mb-4">
-    <a href="#" style="text-decoration:none;">
+    <a href="{{route('print.transaksi')}}" style="text-decoration:none;">
     <div class="card border-left-danger shadow-sm h-100 py-2">
         <div class="card-body">
             <div class="row no-gutters align-items-center">

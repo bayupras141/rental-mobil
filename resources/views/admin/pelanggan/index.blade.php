@@ -22,9 +22,7 @@
                     <tr>
                         <th>#</th>
                         <th>Nama</th>
-                        <th>Username</th>
                         <th>Nik</th>
-                        <th>Email</th>
                         <th>Alamat</th>
                         <th>No hp</th>
                         <th>Jenis Kelamin</th>
@@ -56,30 +54,20 @@
                     <!-- validator -->
                     <ul class="list-group" id="errors-validate"></ul>
                     <!-- end -->       
-
+                    {{-- nama --}}
                     <input type="hidden" name="data_id" id="data_id">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Nama</label>
+                        <label for="nama" class="col-sm-4 control-label">Nama</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control dt-full-name required" id="nama" name="nama" required="">
+                        <input type="text" class="form-control" id="nama" name="nama" required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">Username</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="username" class="form-control dt-post required" name="username">
-                        </div>
-                    </div>
+
+                    
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Nik</label>
                         <div class="col-sm-12">
                             <input type="text" id="nik" class="form-control dt-post required" name="nik">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">Email</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="email" class="form-control dt-post required" name="email">
                         </div>
                     </div>
                     <div class="form-group">
@@ -155,9 +143,7 @@
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     {data: 'nama', name: 'nama'},
-                    {data: 'username', name: 'username'},
                     {data: 'nik', name: 'nik'},
-                    {data: 'email', name: 'email'},
                     {data: 'alamat', name: 'alamat'},
                     {data: 'no_hp', name: 'no_hp'},
                     {data: 'jenis_kelamin', name: 'jenis_kelamin'},
@@ -215,9 +201,7 @@
                     // get data respone
                     $('#data_id').val(data.id);
                     $('#nama').val(data.nama);
-                    $('#username').val(data.username);
                     $('#nik').val(data.nik);
-                    $('#email').val(data.email);
                     $('#alamat').val(data.alamat);
                     $('#no_hp').val(data.no_hp);
                     if(data.jenis_kelamin == 'Laki-Laki'){

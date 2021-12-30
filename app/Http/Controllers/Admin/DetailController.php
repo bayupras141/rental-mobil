@@ -56,4 +56,26 @@ class DetailController extends Controller
         $mobil->save();
         return redirect()->route('transaksi.pengembalian')->with('success', 'Pengembalian success');
     }
+
+    // create function print mobil tersedia
+    public function printMobil()
+    {
+        $mobil = Mobil::where('status', 'Tersedia')->get();
+        return $pdf = PDF::loadView('admin.laporan.mobil', compact('mobil'))->stream();
+    }
+
+    // create function print pelanggan
+    public function printPelanggan()
+    {
+        $pelanggan = Pelanggan::all();
+        return $pdf = PDF::loadView('admin.laporan.pelanggan', compact('pelanggan'))->stream();
+    }
+
+    // create function print transaksi
+    public function printTransaksi()
+    {
+        $pendapatan = Transaksi::where('status','Lunas')->sum('total_bayar');
+        $transaksi = Transaksi::with('mobil', 'pelanggan', 'paket')->get();
+        return $pdf = PDF::loadView('admin.laporan.transaksi', compact('transaksi', 'pendapatan'))->stream();
+    }
 }

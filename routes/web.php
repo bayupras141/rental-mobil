@@ -33,8 +33,12 @@ Route::prefix('admin')
     Route::get('transaksi-print/{id}', [App\Http\Controllers\Admin\DetailController::class, 'print'])->name('transaksi.print');
     Route::get('transaksi-pengembalian', [App\Http\Controllers\Admin\DetailController::class, 'pengembalian'])->name('transaksi.pengembalian');
     Route::get('transaksi-kembali/{id}', [App\Http\Controllers\Admin\DetailController::class, 'kembali'])->name('transaksi.kembali');
+    Route::get('print-mobil', [App\Http\Controllers\Admin\DetailController::class, 'printMobil'])->name('print.mobil');
+    Route::get('print-pelanggan', [App\Http\Controllers\Admin\DetailController::class, 'printPelanggan'])->name('print.pelanggan');
+    Route::get('print-transaksi', [App\Http\Controllers\Admin\DetailController::class, 'printTransaksi'])->name('print.transaksi');
 });
 
 Route::get('/', [App\Http\Controllers\Pelanggan\IndexController::class, 'index']);
 
 Route::get('/detail/{id}', [App\Http\Controllers\Pelanggan\IndexController::class, 'detail'])->name('detail');
+Route::get('/paket', [App\Http\Controllers\Pelanggan\IndexController::class, 'paket'])->name('paket');

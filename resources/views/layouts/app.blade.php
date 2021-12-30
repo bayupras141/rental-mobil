@@ -29,17 +29,14 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Rental Mobil</a>
+            <a class="navbar-brand" href="/">Rental Mobil</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Paket</a>
+              <a class="nav-link" href="{{ route('paket') }}">Paket</a>
             </li>
           </ul>
             </div>
