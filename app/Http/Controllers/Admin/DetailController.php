@@ -44,7 +44,7 @@ class DetailController extends Controller
     {
         $transaksi = Transaksi::with('mobil', 'pelanggan', 'paket')->get();
         return view('admin.transaksi.pengembalian', compact('transaksi'));
-}
+    }
 
     // create function kembali
     public function kembali($id)

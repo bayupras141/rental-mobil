@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Mobil;
 use App\Models\Pelanggan;
 use App\Models\Paket;
+use App\Models\Transaksi;
 use DataTables;
 class IndexController extends Controller
 {
@@ -19,11 +20,10 @@ class IndexController extends Controller
 
     public function detail($id)
     {   
-        $paket = Paket::all();
-        $data = Mobil::where('id',$id)->first();
-        // $transaksi = Transaksi::with('mobil')->where('mobil_id',$id)->get();
-        return view('user.detail', compact('data','paket'));
-
+        $mobil = Mobil::find($id);
+        $dt = Transaksi::where('mobil_id', $id)->first();
+        // dd($dt->tgl_kembali);
+        return view('user.detail', compact('dt', 'mobil'));
     }
 
     // create a function paket

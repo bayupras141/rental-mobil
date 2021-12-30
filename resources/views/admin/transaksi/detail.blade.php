@@ -49,7 +49,8 @@
                         <td>Rp. {{ number_format($data->total_bayar, 0, ',', '.') }}</td>
                         <td>
                             @if($data->status == 'Lunas')
-                            <a href="{{ route('transaksi.print', $data->id) }}" class="btn btn-info btn-sm" OnClick="return confirm('Cetak nota')" target="_blank"><i class="fa fa-print"></i>Print</a>
+                            <a href="{{ route('transaksi.print', $data->id) }}" class="btn btn-info btn-sm" OnClick="return confirm('Cetak nota')" target="_blank"><i class="fa fa-print"></i></a>
+                
                             @else
                             <a href="{{ route('transaksi.bayar', $data->id) }}" class="btn btn-warning btn-sm" OnClick="return confirm('Apakah anda yakin user sudah membayar?')">Bayar</a>
                             @endif
