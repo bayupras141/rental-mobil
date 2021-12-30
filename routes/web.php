@@ -42,3 +42,9 @@ Route::get('/', [App\Http\Controllers\Pelanggan\IndexController::class, 'index']
 
 Route::get('/detail/{id}', [App\Http\Controllers\Pelanggan\IndexController::class, 'detail'])->name('detail');
 Route::get('/paket', [App\Http\Controllers\Pelanggan\IndexController::class, 'paket'])->name('paket');
+
+Route::get('/login', function () {
+})->name('login');
+Route::get('/detail/{id}', [App\Http\Controllers\Pelanggan\IndexController::class, 'detail'])->name('detail');
+
+Route::get('/detail/{id}', [App\Http\Controllers\Pelanggan\IndexController::class, 'detail'])->name('detail');
