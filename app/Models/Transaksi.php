@@ -22,6 +22,7 @@ class Transaksi extends Model
         'pelanggan_id',
         'mobil_id',
         'paket_id',
+        'potongan_harga',
     ];
 
     //relasi pelaggan

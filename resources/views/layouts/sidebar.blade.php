@@ -57,24 +57,6 @@
             </div>
         </div>
     </li>
-    {{-- <li class="nav-item {{active('transaksi.create')}}">
-        <a class="nav-link" href="{{route('transaksi.create')}}">
-            <i class="fas fa-fw fa-book"></i>
-            <span>Transaksi</span>
-        </a>
-    </li>
-    <li class="nav-item {{active('transaksi.index')}}">
-        <a class="nav-link" href="{{route('transaksi.index')}}">
-            <i class="fas fa-fw fa-book"></i>
-            <span>List Transaksi</span>
-        </a>
-    </li>
-    <li class="nav-item {{active('transaksi.history')}}">
-        <a class="nav-link" href="{{route('transaksi.history')}}">
-            <i class="fas fa-fw fa-book"></i>
-            <span>Riwayat Transaksi</span>
-        </a>
-    </li> --}}
     <li class="nav-item dropdown">
         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
             {{ Auth::user()->name }}

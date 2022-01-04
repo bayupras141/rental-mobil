@@ -27,6 +27,7 @@
                         <th>Status</th>
                         <th>Paket</th>
                         <th>Total Bayar</th>
+                        <th>Diskon</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -39,7 +40,6 @@
                         <td>{{ $data->tgl_kembali }}</td>
                         <td>{{ $data->pelanggan->nama }}</td>
                         <td>{{ $data->mobil->nama }}</td>
-                        {{-- if status == belum bayar --}}
                         @if($data->status == 'Belum Bayar')
                         <td><span class="badge badge-warning">{{ $data->status }}</span></td>
                         @elseif($data->status == 'Lunas')
@@ -47,6 +47,7 @@
                         @endif
                         <td>{{ $data->paket->nama }}</td>
                         <td>Rp. {{ number_format($data->total_bayar, 0, ',', '.') }}</td>
+                        <td>{{ number_format($data->potongan_harga, 0, ',', '.') }}</td>
                         <td>
                             @if($data->status == 'Lunas')
                             <a href="{{ route('transaksi.print', $data->id) }}" class="btn btn-info btn-sm" OnClick="return confirm('Cetak nota')" target="_blank"><i class="fa fa-print"></i></a>

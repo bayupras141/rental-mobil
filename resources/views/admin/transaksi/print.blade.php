@@ -103,13 +103,28 @@
                     </tr>
                     
                     <tr>
-                        <td><b>Total Bayar</b></td>
+                        <td><b>Sub Total</b></td>
                       </tr>
                     <tr>
                     <td class="no"></td><td class="bot"></td>
-                    <td class="no">Rp. {{number_format($transaksi->total_bayar,0,',','.')}}</td>
+                    <td class="no">Rp. {{number_format($harga_asli,0,',','.')}}</td>
                     </tr>
+
+                    <tr>
+                      <td><b>Potongan Harga</b></td>
+                    </tr>
+                  <tr>
+                  <td class="no"></td><td class="bot"></td>
+                  <td class="no">Rp. {{number_format($transaksi->potongan_harga,0,',','.')}}</td>
+                  </tr>
                     
+                  <tr>
+                    <td><b>Total Bayar</b></td>
+                  </tr>
+                <tr>
+                <td class="no"></td><td class="bot"></td>
+                <td class="no">Rp. {{number_format($transaksi->total_bayar,0,',','.')}}</td>
+                </tr>
                     <tr>
                       <td ></td><td ></td>
                       <td style="padding-left: 180px;">{{$transaksi->status}}</td>

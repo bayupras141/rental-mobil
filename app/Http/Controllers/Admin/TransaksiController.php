@@ -77,8 +77,16 @@ class TransaksiController extends Controller
         $tgl_kembali = strtotime($tgl_kembali);
         $diff = abs($tgl_sewa - $tgl_kembali);
         $jumlah_hari = floor($diff / (60*60*24));
+
         
-        $total_bayar = $harga * $jumlah_hari;
+        if ($jumlah_hari > 4) {
+            $diskon = $harga * 5 / 100;
+            $harga_akhir = $harga - $diskon;
+        } else {
+            $harga_akhir = $harga;
+            $diskon = 0;
+        } 
+        $total_bayar = $harga_akhir * $jumlah_hari;
 
         // find mobil_id
         $mobil = Mobil::find($request->mobil_id);
@@ -95,6 +103,7 @@ class TransaksiController extends Controller
                 'mobil_id' => $request->mobil_id,
                 'pelanggan_id' => $request->pelanggan_id,
                 'paket_id' => $request->paket_id,
+                'potongan_harga' => $diskon,
             ]
         );
         return response()->json([

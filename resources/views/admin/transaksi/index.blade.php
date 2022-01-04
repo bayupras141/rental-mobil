@@ -1,6 +1,7 @@
 @extends('layouts.layout')
 @section('title', 'List Transaksi')
 @section('content')
+<p><i>Jika transaksi lebih dari 4 hari maka akan mendapat diskon 5%</i></p>
 <div class="col-lg-12">
     <div class="card mb-4">
         <div class="col-lg-2">

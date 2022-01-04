@@ -35,8 +35,26 @@ class DetailController extends Controller
     // create function print pdf transaksi user
     public function print($id)
     {
+        $trans = Transaksi::find($id);
+        // cari harga paket dari paket_id
+        $paket = Paket::where('id', $trans->paket_id)->first();
+        $harga = $paket->harga;
+
+        // cari jumlah hari
+        $tgl_sewa = $trans->tgl_sewa;
+        $tgl_kembali = $trans->tgl_kembali;
+        $tgl_sewa = strtotime($tgl_sewa);
+        $tgl_kembali = strtotime($tgl_kembali);
+        $diff = abs($tgl_sewa - $tgl_kembali);
+        $jumlah_hari = floor($diff / (60*60*24));
+        
+
+        // cari harga asli
+        $harga_asli = $jumlah_hari * $harga;
+
         $transaksi = Transaksi::with('mobil', 'pelanggan', 'paket')->find($id);
-        return $pdf = PDF::loadView('admin.transaksi.print', compact('transaksi'))->stream();
+        
+        return $pdf = PDF::loadView('admin.transaksi.print', compact('transaksi', 'harga_asli'))->stream();
     }
 
     // create function view pengembalian
